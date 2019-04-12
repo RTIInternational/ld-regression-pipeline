@@ -10,7 +10,6 @@ workflow munge_sumstats_chr_wf{
     Int a1_col
     Int a2_col
     Int beta_col
-    Int se_col
     Int pvalue_col
 
     File legend_file
@@ -20,7 +19,7 @@ workflow munge_sumstats_chr_wf{
     String signed_sumstats
     Int? num_samples
 
-    String output_basename = "test"
+    String output_basename
     String munge_sumstats_output_basename = "${output_basename}.chr${chr}"
 
     call PREPROCESSING.standardize_sumstat_cols as stdize_cols {
@@ -32,7 +31,6 @@ workflow munge_sumstats_chr_wf{
             a1_col = a1_col,
             a2_col = a2_col,
             beta_col = beta_col,
-            se_col = se_col,
             pvalue_col = pvalue_col
     }
 

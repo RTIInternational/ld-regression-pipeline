@@ -8,7 +8,6 @@
     "munge_sumstats_wf.a1_col":     4,
     "munge_sumstats_wf.a2_col":     5,
     "munge_sumstats_wf.beta_col":   6,
-    "munge_sumstats_wf.se_col":     7,
     "munge_sumstats_wf.pvalue_col": 8,
     "munge_sumstats_wf.sumstats_files":[
       "s3://rti-nd/META/1df/boneyard/20181108/results/ea/20181108_ftnd_meta_analysis_wave3.eur.chr1.exclude_singletons.1df.gz",

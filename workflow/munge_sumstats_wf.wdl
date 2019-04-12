@@ -10,14 +10,13 @@ workflow munge_sumstats_wf{
     Int a1_col
     Int a2_col
     Int beta_col
-    Int se_col
     Int pvalue_col
 
     Array[File] legend_files
     Array[Int] chrs
 
     File merge_allele_snplist
-    String signed_sumstats = "BETA,0"
+    String signed_sumstats
     Int? num_samples
 
     String munge_sumstats_output_basename = "test"
@@ -32,7 +31,6 @@ workflow munge_sumstats_wf{
                 a1_col = a1_col,
                 a2_col = a2_col,
                 beta_col = beta_col,
-                se_col = se_col,
                 pvalue_col = pvalue_col,
                 legend_file = legend_files[chr_index],
                 chr = chrs[chr_index],

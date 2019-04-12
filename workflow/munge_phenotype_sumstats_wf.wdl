@@ -10,7 +10,6 @@ workflow munge_sumstats_wf{
     Int a1_col
     Int a2_col
     Int beta_col
-    Int se_col
     Int pvalue_col
     String signed_sumstats
     Int? num_samples
