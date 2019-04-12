@@ -1,0 +1,29 @@
+{
+
+  "####################### STEP_1 INPUTS: Standardize GWAS/Meta-analysis output files for input to munge_sumstats.py": "",
+  "## Make sure you set the 1-based column index of each information column as they appear in your gwas_input_files": "",
+    "munge_sumstats_chr_wf.id_col":     1,
+    "munge_sumstats_chr_wf.chr_col":    2,
+    "munge_sumstats_chr_wf.pos_col":    3,
+    "munge_sumstats_chr_wf.a1_col":     4,
+    "munge_sumstats_chr_wf.a2_col":     5,
+    "munge_sumstats_chr_wf.beta_col":   6,
+    "munge_sumstats_chr_wf.se_col":     7,
+    "munge_sumstats_chr_wf.pvalue_col": 8,
+    "munge_sumstats_chr_wf.sumstats_in": "s3://rti-nd/META/1df/boneyard/20181108/results/ea/20181108_ftnd_meta_analysis_wave3.eur.chr22.exclude_singletons.1df.gz",
+
+  "####################### STEP_2 INPUTS: Convert to 1000g ids": "",
+  "## Make sure chromosomes are same order as gwas_input files above.": "",
+    "munge_sumstats_chr_wf.chr": 22,
+
+  "## 1000g Legend files. Used to standardize snp ids to 1000genome id space.": "",
+    "munge_sumstats_chr_wf.legend_file": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr22.legend.gz",
+
+  "####################### STEP_3 INPUTS: munge_sumstats.py":"",
+    "munge_sumstats_chr_wf.merge_allele_snplist": "s3://clustername--files/w_hm3.snplist",
+    "munge_sumstats_chr_wf.signed_sumstats" : "BETA,0",
+    "munge_sumstats_chr_wf.num_samples" : 5000
+
+}
+
+

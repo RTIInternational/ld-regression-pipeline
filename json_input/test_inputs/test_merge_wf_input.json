@@ -1,0 +1,10 @@
+{
+
+  "####################### STEP_1 INPUTS: Standardize GWAS/Meta-analysis output files for input to munge_sumstats.py": "",
+  "## Make sure you set the 1-based column index of each information column as they appear in your gwas_input_files": "",
+    "test_merge_wf.sumstats_files":[
+      "s3://rti-nd/META/1df/boneyard/20181108/results/ea/20181108_ftnd_meta_analysis_wave3.eur.chr21.exclude_singletons.1df.gz",
+      "s3://rti-nd/META/1df/boneyard/20181108/results/ea/20181108_ftnd_meta_analysis_wave3.eur.chr22.exclude_singletons.1df.gz"
+    ]
+
+}
