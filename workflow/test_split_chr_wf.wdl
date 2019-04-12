@@ -19,20 +19,13 @@ task gunzip{
 workflow test_split_chr_wf{
 
     File sumstat_file
-    Array[Int] chrs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]
-    Int chr_col = 2
-
-    call gunzip{
-        input:
-            in_file = sumstat_file
-    }
+    Int chr_col = 1
 
     call UTIL.split_text_file_by_chr as split_chr{
         input:
-            in_file = gunzip.output_file,
+            in_file = sumstat_file,
             output_basename = "test_merge",
-            chr_col = chr_col,
-            chrs = chrs
+            chr_col = chr_col
     }
 
     output{

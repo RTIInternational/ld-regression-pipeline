@@ -1,7 +1,7 @@
 import "ld-regression-pipeline/workflow/munge_sumstats_wf.wdl" as MUNGE_WF
 import "ld-regression-pipeline/workflow/task_modules/utilities.wdl" as UTIL
 
-workflow munge_sumstats_wf{
+workflow munge_phenotype_sumstats_wf{
 
     Array[File] sumstats_files
     Int id_col
@@ -20,4 +20,6 @@ workflow munge_sumstats_wf{
 
 
     String munge_sumstats_output_basename = "test"
+
+
 

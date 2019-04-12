@@ -18,15 +18,10 @@ task cat_files_with_headers {
 }
 
 task split_text_file_by_chr {
-    String in_file
-    Array[Int] chrs
+    File in_file
     Int chr_col
     String output_basename
     command<<<
-
-        #for chr in ${write_lines(chrs)}; do
-        #    awk -v chr=$chr '$${chr_col} == chr' ${in_file} > ${output_basename}.chr$chr.txt
-        #done
 
         awk 'NR==1{ h=$0 }NR>1{ print (!a[$${chr_col}]++? h ORS $0 : $0) > "${output_basename}.chr"$${chr_col}".merged.txt" }' ${in_file}
 
@@ -40,3 +35,4 @@ task split_text_file_by_chr {
         memory: "1 GB"
     }
 }
+
