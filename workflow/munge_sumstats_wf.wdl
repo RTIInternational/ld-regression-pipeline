@@ -11,6 +11,7 @@ workflow munge_sumstats_wf{
     Int a2_col
     Int beta_col
     Int pvalue_col
+    Int num_samples_col
 
     Array[File] legend_files
     Array[Int] chrs
@@ -32,6 +33,7 @@ workflow munge_sumstats_wf{
                 a2_col = a2_col,
                 beta_col = beta_col,
                 pvalue_col = pvalue_col,
+                num_samples_col = num_samples_col,
                 legend_file = legend_files[chr_index],
                 chr = chrs[chr_index],
                 merge_allele_snplist = merge_allele_snplist,

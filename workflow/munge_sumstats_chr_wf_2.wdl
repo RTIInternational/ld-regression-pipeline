@@ -13,6 +13,12 @@ workflow munge_sumstats_chr_wf{
     Int pvalue_col
     Int num_samples_col
 
+    String id_colname
+    String a1_colname
+    String a2_colname
+    String beta_colname
+    String pvalue_colname
+
     File legend_file
     Int chr
 

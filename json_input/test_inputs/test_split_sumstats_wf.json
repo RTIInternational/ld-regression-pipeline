@@ -1,0 +1,10 @@
+{
+
+  "####################### STEP_1 INPUTS: Standardize GWAS/Meta-analysis output files for input to munge_sumstats.py": "",
+  "## Make sure you set the 1-based column index of each information column as they appear in your gwas_input_files": "",
+    "munge_phenotype_sumstats_wf.sumstat_files": [
+      "s3://rti-nd/LDSC/GSCAN/CigarettesPerDay.txt.gz",
+      "s3://rti-nd/LDSC/COPDGWAS_HobbsEtAl/modGcNoOtherMinMissSorted.withchrpos.txt"
+      ],
+    "munge_phenotype_sumstats_wf.chr_cols" : [1,1]
+}

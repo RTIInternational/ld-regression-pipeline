@@ -72,6 +72,3 @@ workflow munge_phenotype_sumstats_wf{
         File munge_sumstats_output = merge_munge_output.output_file
     }
 }
-
-
-

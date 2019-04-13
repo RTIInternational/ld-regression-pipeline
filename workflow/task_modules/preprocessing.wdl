@@ -12,6 +12,7 @@ task standardize_sumstat_cols{
     Int a2_col
     Int beta_col
     Int pvalue_col
+    Int num_samples_col
     String output_filename = basename(sumstats_file, ".gz") + ".standardized.txt"
     String tmp_filename = "unzipped_gxg_file.txt"
     command<<<
@@ -30,12 +31,12 @@ task standardize_sumstat_cols{
         sed -i 's/ /\t/g' $input_file
 
         # Re-arrange colunns
-        awk -v OFS="\t" -F"\t" '{print $${id_col},$${chr_col},$${pos_col},$${a1_col},$${a2_col},$${beta_col},$${pvalue_col}}' \
+        awk -v OFS="\t" -F"\t" '{print $${id_col},$${chr_col},$${pos_col},$${a1_col},$${a2_col},$${beta_col},$${pvalue_col},$${num_samples_col}}' \
             $input_file \
             > ${output_filename}
 
         # Standardize column names
-        sed -i "1s/.*/MarkerName\tchr\tposition\tA1\tA2\tBETA\tP/" ${output_filename}
+        sed -i "1s/.*/MarkerName\tchr\tposition\tA1\tA2\tBETA\tP\tN/" ${output_filename}
     >>>
     output{
         File output_file = "${output_filename}"
