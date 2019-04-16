@@ -41,7 +41,9 @@ workflow munge_phenotype_sumstats_wf{
             chr_col = chr_col
     }
 
-    scatter (chr_index in range(length(chrs))){
+    scatter (chr_index in range(length(split_by_chr.output_files))){
+        Int chr = split_by_chr.chrs[chr_index]
+        Int legend_chr_index = chr-1
         call MUNGE_CHR_WF.munge_sumstats_chr_wf as munge_chr_wf{
             input:
                 sumstats_in = split_by_chr.output_files[chr_index],
@@ -53,8 +55,8 @@ workflow munge_phenotype_sumstats_wf{
                 beta_col = beta_col,
                 pvalue_col = pvalue_col,
                 num_samples_col = num_samples_col,
-                legend_file = legend_files[chr_index],
-                chr = chrs[chr_index],
+                legend_file = legend_files[legend_chr_index],
+                chr = chr,
                 merge_allele_snplist = merge_allele_snplist,
                 signed_sumstats = signed_sumstats,
                 num_samples = num_samples,

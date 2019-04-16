@@ -10,7 +10,7 @@
     "munge_phenotype_sumstats_wf.beta_col":   10,
     "munge_phenotype_sumstats_wf.pvalue_col": 12,
     "munge_phenotype_sumstats_wf.sample_size_col": 11,
-    "munge_phenotype_sumstats_wf.sumstats_file" : "s3://rti-nd/LDSC/COPDGWAS_HobbsEtAl/modGcNoOtherMinMissSorted.withchrpos.txt",
+    "munge_phenotype_sumstats_wf.sumstats_file" : "s3://rti-nd/LDSC/COPDGWAS_HobbsEtAl/modGcNoOtherMinMissSorted.withchrpos.txt.gz",
 
   "####################### STEP_2 INPUTS: Convert to 1000g ids": "",
   "## Make sure chromosomes are same order as gwas_input files above.": "",

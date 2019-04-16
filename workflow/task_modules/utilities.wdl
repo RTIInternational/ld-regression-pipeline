@@ -39,11 +39,18 @@ task split_text_file_by_chr {
     String output_basename
     command<<<
 
+        set -e
+
+        # Split by chromosome
         awk 'NR==1{ h=$0 }NR>1{ print (!a[$${chr_col}]++? h ORS $0 : $0) > "${output_basename}.chr"$${chr_col}".merged.txt" }' ${in_file}
+
+        # Print output_files chromosomes order
+        ls -l *merged.txt | perl -lne 'print $1 if /.+chr(\d+)\.merged.*/'
 
     >>>
     output{
         Array[File] output_files = glob("${output_basename}*")
+        Array[Int] chrs = read_lines(stdout())
     }
     runtime {
         docker: "ubuntu:18.04"
