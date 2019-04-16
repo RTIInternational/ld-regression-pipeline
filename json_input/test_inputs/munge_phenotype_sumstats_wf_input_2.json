@@ -7,10 +7,10 @@
     "munge_phenotype_sumstats_wf.pos_col":    2,
     "munge_phenotype_sumstats_wf.a1_col":     4,
     "munge_phenotype_sumstats_wf.a2_col":     5,
-    "munge_phenotype_sumstats_wf.beta_col":   10,
-    "munge_phenotype_sumstats_wf.pvalue_col": 12,
-    "#munge_phenotype_sumstats_wf.sample_size_col": 11,
-    "munge_phenotype_sumstats_wf.sumstats_file" : "s3://rti-nd/LDSC/COPDGWAS_HobbsEtAl/modGcNoOtherMinMissSorted.withchrpos.txt.gz",
+    "munge_phenotype_sumstats_wf.beta_col":   9,
+    "munge_phenotype_sumstats_wf.pvalue_col": 8,
+    "munge_phenotype_sumstats_wf.num_samples_col": 11,
+    "munge_phenotype_sumstats_wf.sumstats_file" : "s3://rti-nd/LDSC/GSCAN/DrinksPerWeek.txt.gz",
 
   "####################### STEP_2 INPUTS: Convert to 1000g ids": "",
   "## Make sure chromosomes are same order as gwas_input files above.": "",
@@ -44,7 +44,6 @@
 
   "####################### STEP_3 INPUTS: munge_sumstats.py":"",
     "munge_phenotype_sumstats_wf.merge_allele_snplist": "s3://clustername--files/w_hm3.snplist",
-    "munge_phenotype_sumstats_wf.signed_sumstats" : "BETA,0",
-    "munge_phenotype_sumstats_wf.num_samples" : 51772
+    "munge_phenotype_sumstats_wf.signed_sumstats" : "BETA,0"
 
 }
