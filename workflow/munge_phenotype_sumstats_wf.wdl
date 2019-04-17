@@ -11,13 +11,12 @@ workflow munge_phenotype_sumstats_wf{
     Int a2_col
     Int beta_col
     Int pvalue_col
-    Int? num_samples_col
-
     String signed_sumstats
+
+    Int? num_samples_col
     Int? num_samples
 
     Array[File] legend_files
-    Array[Int] chrs
     File merge_allele_snplist
 
     # Unzip file if it needs to be unzipped
