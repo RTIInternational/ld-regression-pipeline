@@ -53,14 +53,26 @@ task munge_sumstats{
 
         source activate ldsc
 
-        munge_sumstats.py \
-            --sumstats ${sumstats_file} \
-            --a1 ${a1_colname} \
-            --a2 ${a2_colname} \
-            --merge-alleles ${merge_allele_snplist} \
-            --snp ${snp_colname} \
-            --signed-sumstats ${signed_sumstats} \
-            --out ${output_basename} ${"--N " + num_samples}
+        if [[ "${num_samples}" != "-1" ]]; then
+            munge_sumstats.py \
+                --sumstats ${sumstats_file} \
+                --a1 ${a1_colname} \
+                --a2 ${a2_colname} \
+                --merge-alleles ${merge_allele_snplist} \
+                --snp ${snp_colname} \
+                --signed-sumstats ${signed_sumstats} \
+                --out ${output_basename} ${"--N " + num_samples}
+        else
+            munge_sumstats.py \
+                --sumstats ${sumstats_file} \
+                --a1 ${a1_colname} \
+                --a2 ${a2_colname} \
+                --merge-alleles ${merge_allele_snplist} \
+                --snp ${snp_colname} \
+                --signed-sumstats ${signed_sumstats} \
+                --out ${output_basename}
+        fi
+
     }
     output {
         File output_file = "${output_filename}"
