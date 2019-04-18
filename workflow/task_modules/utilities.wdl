@@ -44,13 +44,15 @@ task split_text_file_by_chr {
         # Split by chromosome
         awk 'NR==1{ h=$0 }NR>1{ print (!a[$${chr_col}]++? h ORS $0 : $0) > "${output_basename}.chr"$${chr_col}".merged.txt" }' ${in_file}
 
-        # Print output_files chromosomes order
-        ls -l *merged.txt | perl -lne 'print $1 if /.+chr(\d+)\.merged.*/'
+        # Print chromosome names and the index of each chromosome split in the file array
+        #ls -l *merged.txt | perl -lne 'print $1 if /.+chr(\w+)\.merged.*/'
+
+        ls -l *merged.txt | perl -lne 'print "$1\t".($.-1) if /.+chr(\w+)\.merged.*/'
 
     >>>
     output{
         Array[File] output_files = glob("${output_basename}*")
-        Array[Int] chrs = read_lines(stdout())
+        Map[String, Int] chr_index_map = read_map(stdout())
     }
     runtime {
         docker: "ubuntu:18.04"
@@ -92,4 +94,3 @@ task untar {
         memory: "1 GB"
     }
 }
-
