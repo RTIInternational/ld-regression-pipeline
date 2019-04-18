@@ -75,3 +75,21 @@ task get_colname_index {
     }
 }
 
+task untar {
+    String tar_file
+    Boolean gunzip = false
+    String suffix = if gunzip then ".tar.gz" else ".tar"
+    String output_dir = basename(tar_file, suffix)
+    command{
+        tar ${true="-xzvf" false="-xvf" gunzip} ${tar_file}
+    }
+    output{
+        Array[File] output_files = glob("${output_dir}/*")
+    }
+    runtime {
+        docker: "ubuntu:18.04"
+        cpu: "1"
+        memory: "1 GB"
+    }
+}
+
