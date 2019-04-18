@@ -11,18 +11,18 @@ workflow munge_sumstats_wf{
     Int a2_col
     Int beta_col
     Int pvalue_col
-    Int? num_samples_col
-
-    Array[File] legend_files
-    Array[Int] chrs
-
-    File merge_allele_snplist
     String signed_sumstats
+
+    Int? num_samples_col
     Int? num_samples
 
+    Array[Pair[String, File]] legend_files
+    File merge_allele_snplist
     String munge_sumstats_output_basename = "test"
 
-    scatter (chr_index in range(length(chrs))){
+    scatter (chr_index in range(length(legend_files))){
+        String chr = legend_files[chr_index].left
+        File legend_file = legend_files[chr_index].right
         call MUNGE_CHR.munge_sumstats_chr_wf as munge_chr_wf{
             input:
                 sumstats_in = sumstats_files[chr_index],
@@ -34,8 +34,8 @@ workflow munge_sumstats_wf{
                 beta_col = beta_col,
                 pvalue_col = pvalue_col,
                 num_samples_col = num_samples_col,
-                legend_file = legend_files[chr_index],
-                chr = chrs[chr_index],
+                legend_file = legend_file,
+                chr = chr,
                 merge_allele_snplist = merge_allele_snplist,
                 signed_sumstats = signed_sumstats,
                 num_samples = num_samples,
