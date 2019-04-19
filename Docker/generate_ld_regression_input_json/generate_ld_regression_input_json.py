@@ -10,12 +10,12 @@ import sys
 from utils import configure_logging, get_argparser
 
 # Columns that must appear in input file
-REQUIRED_COLS = ["trait", "trait_label", "sumstats_path", "category",
+REQUIRED_COLS = ["trait", "plot_label", "sumstats_path", "category",
                  "sample_size", "id_col", "chr_col", "pos_col", "a1_col", "a2_col",
                  "effect_col", "pvalue_col", "sample_size_col", "effect_type"]
 
 # Columns that cannot have empty values
-REQUIRED_VAL_COLS = ["trait", "trait_label", "sumstats_path", "category",
+REQUIRED_VAL_COLS = ["trait", "plot_label", "sumstats_path", "category",
                      "id_col", "chr_col", "pos_col", "a1_col", "a2_col",
                      "effect_col", "pvalue_col", "effect_type"]
 
@@ -33,7 +33,8 @@ NULL_EFFECT_VALS = {"beta"  : 0,
 # Maps colnames in input excel file to field names in WDL input json
 OUTPUT_COLNAME_MAP = {
     "trait_name"        : "pheno_names",
-    "trait_label"       : "pheno_plot_labels",
+    "plot_label"       : "pheno_plot_labels",
+    "category"          : "pheno_plot_groups",
     "sumstats_path"     : "pheno_sumstats_files",
     "id_col"            : "pheno_id_cols",
     "chr_col"           : "pheno_chr_cols",
@@ -157,18 +158,23 @@ def main():
     configure_logging(args.verbosity_level)
 
     # Read in json file and check format
+    logging.info("Reading WDL input template: {0}".format(input_json))
     with open(input_json) as fh:
         input_dict = json.load(fh, object_pairs_hook=OrderedDict)
 
     # Guess name of workflow from input names
     workflow_name = detect_workflow_name(input_dict)
+    logging.info("Workflow name detected: {0}".format(workflow_name))
 
     # Read in excel file and check format
+    logging.info("Reading phenotype information from excel file: {0}".format(input_excel))
     pheno_df = pd.read_excel(input_excel)
+
+    logging.info("Validating structure of excel file...")
     check_pheno_input_format(pheno_df)
 
     # Normalize trait names so they are machine readable
-    pheno_df["trait_name"] = pheno_df["trait_label"].apply(normalize_trait_name)
+    pheno_df["trait_name"] = pheno_df["plot_label"].apply(normalize_trait_name)
 
     # Get signed sumstat string that will be passed to munge_sumstats.py
     pheno_df["signed_sumstats"] = pheno_df["effect_type"].apply(get_signed_sumstat)
