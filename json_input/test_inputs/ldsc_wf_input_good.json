@@ -35,55 +35,96 @@
   "s3://rti-nd/META/1df/boneyard/20181108/results/ea/20181108_ftnd_meta_analysis_wave3.eur.chr22.exclude_singletons.1df.gz"
  ],
  "####################### STEP_2 INPUTS: Convert to 1000g ids": "",
- "## Make sure chromosomes are same order as gwas_input files above.": "",
- "ldsc_preprocessing_wf.chrs": [
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12,
-  13,
-  14,
-  15,
-  16,
-  17,
-  18,
-  19,
-  20,
-  21,
-  22
- ],
  "## 1000g Legend files. Used to standardize snp ids to 1000genome id space.": "",
  "ldsc_preprocessing_wf.legend_files": [
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr1.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr2.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr3.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr4.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr5.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr6.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr7.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr8.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr9.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr10.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr11.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr12.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr13.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr14.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr15.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr16.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr17.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr18.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr19.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr20.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr21.legend.gz",
-  "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr22.legend.gz"
+  {
+   "Left": "1",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr1.legend.gz"
+  },
+  {
+   "Left": "2",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr2.legend.gz"
+  },
+  {
+   "Left": "3",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr3.legend.gz"
+  },
+  {
+   "Left": "4",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr4.legend.gz"
+  },
+  {
+   "Left": "5",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr5.legend.gz"
+  },
+  {
+   "Left": "6",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr6.legend.gz"
+  },
+  {
+   "Left": "7",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr7.legend.gz"
+  },
+  {
+   "Left": "8",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr8.legend.gz"
+  },
+  {
+   "Left": "9",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr9.legend.gz"
+  },
+  {
+   "Left": "10",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr10.legend.gz"
+  },
+  {
+   "Left": "11",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr11.legend.gz"
+  },
+  {
+   "Left": "12",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr12.legend.gz"
+  },
+  {
+   "Left": "13",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr13.legend.gz"
+  },
+  {
+   "Left": "14",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr14.legend.gz"
+  },
+  {
+   "Left": "15",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr15.legend.gz"
+  },
+  {
+   "Left": "16",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr16.legend.gz"
+  },
+  {
+   "Left": "17",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr17.legend.gz"
+  },
+  {
+   "Left": "18",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr18.legend.gz"
+  },
+  {
+   "Left": "19",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr19.legend.gz"
+  },
+  {
+   "Left": "20",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr20.legend.gz"
+  },
+  {
+   "Left": "21",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr21.legend.gz"
+  },
+  {
+   "Left": "22",
+   "Right": "s3://rti-common/ref_panels/1000G/impute_format/1000g_phase3/1000GP_Phase3_chr22.legend.gz"
+  }
  ],
  "####################### STEP_3 INPUTS: munge_sumstats.py": "",
  "ldsc_preprocessing_wf.merge_allele_snplist": "s3://clustername--files/w_hm3.snplist",

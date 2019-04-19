@@ -30,8 +30,7 @@ workflow ldsc_preprocessing_wf{
     Array[Int] pheno_num_samples
 
     # Common reference files used for processing all sumstats files
-    Array[File] legend_files
-    Array[Int] chrs
+    Array[Pair[String, File]] legend_files
     File merge_allele_snplist
 
 
@@ -49,7 +48,6 @@ workflow ldsc_preprocessing_wf{
             num_samples_col = main_num_samples_col,
             num_samples = main_num_samples,
             signed_sumstats = main_signed_sumstats,
-            chrs = chrs,
             legend_files = legend_files,
             merge_allele_snplist = merge_allele_snplist
     }
