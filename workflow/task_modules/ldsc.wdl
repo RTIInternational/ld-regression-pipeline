@@ -87,21 +87,3 @@ task munge_sumstats{
         memory: "6 GB"
   }
 }
-
-task parse_ldsc_rg_results{
-
-    File ld_regression_log
-    String output_filename = "ldsc_rg_results.tsv"
-
-    command {
-        tail ${ld_regression_log} | grep -A 1 "p1" > ${output_filename}
-    }
-    output{
-        File output_file = "${output_filename}"
-    }
-    runtime{
-        docker: "ubuntu:18.04"
-        cpu: "1"
-        memory: "1 GB"
-    }
-}
