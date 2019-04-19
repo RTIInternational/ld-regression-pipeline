@@ -1,0 +1,12 @@
+{
+  "plot_ld_regression_wf.ldsc_regression_logs" :
+  [
+    "s3://rti-cromwell-output/cromwell-execution/single_ld_regression_wf/3bfda67b-4c7a-4865-a82a-d52c22587ec0/call-ld_regression/ftnd_by_cigarretes_per_day.ldsc_regression.log",
+    "s3://rti-cromwell-output/cromwell-execution/single_ld_regression_wf/9e9db301-f41f-4ece-8f85-6ead40b0d67e/call-ld_regression/ftnd_by_cigarretes_per_day.ldsc_regression.log",
+    "s3://rti-cromwell-output/cromwell-execution/single_ld_regression_wf/6dabee6f-c48c-4e72-9fb3-f71c063e3dbb/call-ld_regression/ftnd_by_cigarretes_per_day.ldsc_regression.log"
+  ],
+  "plot_ld_regression_wf.trait_labels": ["Cigarettes per day (GSCAN)", "Age of smoking initiation (GSCAN)", "Lifetime cannabis use (ever vs. never)"],
+  "plot_ld_regression_wf.group_labels": ["Cigarette Smoking", "Cigarette Smoking", "Drug and alcohol use"],
+  "plot_ld_regression_wf.analysis_name": "test_plot"
+}
+
