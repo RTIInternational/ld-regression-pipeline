@@ -1,34 +1,38 @@
-task ldsc{
-    # Task for running S-PrediXcan on a single tissue expression database
-    File model_db_file
-    File covariance_file
-    Array[File] gwas_files
-    String snp_column
-    String effect_allele_column
-    String non_effect_allele_column
-    String beta_column
-    String pvalue_column
-    String se_column
-    String output_base = basename(model_db_file, ".db")
-    String output_file = output_base + ".ldsc_results.txt"
-    command {
+task ldsc_rg{
+    # Task for running LD regression between two phenotypes using LDSC
+
+    # Munged sumstats files for trait of interest and a second train
+    File ref_munged_sumstats_file
+    File w_munged_sumstats_file
+
+    # ld files needed for each
+    Array[File] ref_ld_chr_files
+    Array[File] w_ld_chr_files
+
+    # Output filenames
+    String output_basename
+    String output_filename = output_basename + ".log"
+
+    command <<<
 
         source activate ldsc
 
+        mkdir ref_ld_chr
+        cp -r ${sep=' ./ref_ld_chr ; cp -r ' ref_ld_chr_files} ./ref_ld_chr
+        ls -l ref_ld_chr
+
+        mkdir w_ld_chr
+        cp -r ${sep=' ./w_ld_chr ; cp -r ' w_ld_chr_files} ./w_ld_chr
+        ls -l w_ld_chr
+
         ldsc.py \
-            --model_db_path ${model_db_file} \
-            --covariance ${covariance_file} \
-            --gwas_folder ./gwas_dir \
-            --beta_column ${beta_column} \
-            --pvalue_column ${pvalue_column} \
-            --effect_allele_column ${effect_allele_column} \
-            --non_effect_allele_column ${non_effect_allele_column} \
-            --snp_column ${snp_column} \
-            --se_column ${se_column} \
-            --output_file ${output_file}
-    }
+            --rg ${ref_munged_sumstats_file},${w_munged_sumstats_file} \
+            --ref-ld-chr ref_ld_chr/ \
+            --w-ld-chr w_ld_chr/ \
+            --out ${output_basename}
+    >>>
     output {
-        File ldsc_output = output_file
+       File output_file = "${output_filename}"
     }
     runtime {
         docker: "rticode/ldsc:7618f4943d8f31a37cbd207f867ba5742d03373f"
@@ -82,4 +86,22 @@ task munge_sumstats{
         cpu: "2"
         memory: "6 GB"
   }
+}
+
+task parse_ldsc_rg_results{
+
+    File ld_regression_log
+    String output_filename = "ldsc_rg_results.tsv"
+
+    command {
+        tail ${ld_regression_log} | grep -A 1 "p1" > ${output_filename}
+    }
+    output{
+        File output_file = "${output_filename}"
+    }
+    runtime{
+        docker: "ubuntu:18.04"
+        cpu: "1"
+        memory: "1 GB"
+    }
 }

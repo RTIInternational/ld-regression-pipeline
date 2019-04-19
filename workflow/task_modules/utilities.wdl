@@ -78,12 +78,12 @@ task get_colname_index {
 }
 
 task untar {
-    String tar_file
-    Boolean gunzip = false
-    String suffix = if gunzip then ".tar.gz" else ".tar"
+    File tar_file
+    String suffix
+    String tar_options
     String output_dir = basename(tar_file, suffix)
     command{
-        tar ${true="-xzvf" false="-xvf" gunzip} ${tar_file}
+        tar  ${tar_options} ${tar_file}
     }
     output{
         Array[File] output_files = glob("${output_dir}/*")
@@ -94,3 +94,45 @@ task untar {
         memory: "1 GB"
     }
 }
+
+workflow untar_wf{
+
+    File tar_file
+    String suffix = ".tar"
+    String tar_options = "-xvf"
+
+    # Check to see if tar file is gzipped
+    if(basename(tar_file, ".tar.gz") != basename(tar_file)){
+        String gunzip_suffix = ".tar.gz"
+        String gunzip_tar_options = "-xzvf"
+    }
+
+    # Check for another common gzipped-tar suffix
+    if(basename(tar_file, ".tgz") != basename(tar_file)){
+        String tgz_suffix = ".tar.gz"
+        String tgz_tar_options = "-xzvf"
+    }
+
+    # Check to see if tar file is bz2 zipped
+    if(basename(tar_file, ".tar.bz2") != basename(tar_file)){
+        String bz2_suffix = ".tar.bz2"
+        String bz2_tar_options = "-xjvf"
+    }
+
+    # Detect final options for untarring based on suffix
+    String final_suffix = select_first([bz2_suffix, gunzip_suffix, tgz_suffix, suffix])
+    String final_tar_options = select_first([bz2_tar_options, gunzip_tar_options, tgz_tar_options, tar_options])
+
+    call untar{
+        input:
+            tar_file = tar_file,
+            suffix = final_suffix,
+            tar_options = final_tar_options
+    }
+
+    output{
+        Array[File] output_files = untar.output_files
+    }
+}
+
+

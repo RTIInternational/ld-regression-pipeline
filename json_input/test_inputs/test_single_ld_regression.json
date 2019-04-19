@@ -1,0 +1,10 @@
+{
+    "single_ld_regression_wf.ref_munged_sumstats_file": "s3://rti-cromwell-output/cromwell-execution/ldsc_preprocessing_wf/e98e565e-cca3-456e-baeb-fe7dada73782/call-munge_main/MUNGE_MAIN_WF.munge_sumstats_wf/06a1ff0c-edd9-4352-81bc-cc9a90aeca64/call-merge_munge_output/test.merged.txt",
+    "single_ld_regression_wf.w_munged_sumstats_file": "s3://rti-cromwell-output/cromwell-execution/ldsc_preprocessing_wf/e98e565e-cca3-456e-baeb-fe7dada73782/call-munge_pheno/shard-0/MUNGE_TRAIT_WF.munge_phenotype_sumstats_wf/f619511c-e1a3-4785-9b79-3cc2433ff406/call-merge_munge_output/CigarettesPerDay.txt.munged.merged.txt",
+
+    "single_ld_regression_wf.ref_ld_chr_tarfile": "s3://clustername--files/eur_w_ld_chr.tar.bz2",
+    "single_ld_regression_wf.w_ld_chr_tarfile": "s3://clustername--files/eur_w_ld_chr.tar.bz2",
+    "single_ld_regression_wf.ref_trait_name": "ftnd",
+    "single_ld_regression_wf.w_trait_name": "cigarretes_per_day"
+}
+
