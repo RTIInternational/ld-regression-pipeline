@@ -19,13 +19,24 @@ task parse_log_file{
 }
 
 task make_label_data_tsv{
-    Array[Array[String]] label_data
+    Array[String] trait_labels
+    Array[String] group_labels
     String output_basename
     String output_filename = "${output_basename}.plot_metadata.tsv"
     command{
 
-        # Output to TSV
-        cat ${write_tsv(label_data)} > tmpfile.tsv
+        # Output trait names to txt file
+        for line in '${sep="' '" trait_labels}';do
+            echo "$line" >> trait.txt
+        done
+
+        # Output group names to txt file
+        for line in '${sep="' '" group_labels}';do
+            echo "$line" >> group.txt
+        done
+
+        # Combine in to TSV
+        paste trait.txt group.txt > tmpfile.tsv
 
         # Add column names
         echo -e "Trait_Label\tTrait_Group" | cat - tmpfile.tsv > ${output_filename}
@@ -79,7 +90,8 @@ workflow plot_ld_regression_wf{
     Array[Array[String]] label_data = transpose(plot_data)
     call make_label_data_tsv{
         input:
-            label_data = label_data,
+            trait_labels = trait_labels,
+            group_labels = group_labels,
             output_basename = analysis_name
     }
 

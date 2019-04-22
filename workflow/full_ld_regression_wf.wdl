@@ -91,7 +91,7 @@ workflow full_ld_regression_wf{
         call LDSC.single_ld_regression_wf as ld_regression{
             input:
                 ref_munged_sumstats_file = munge_main.munge_sumstats_output,
-                w_munged_sumstats_file = munge_pheno.munge_sumstats_output,
+                w_munged_sumstats_file = munge_pheno.munge_sumstats_output[phenotype_file_index],
                 ref_ld_chr_tarfile = ref_ld_chr_tarfile,
                 w_ld_chr_tarfile = w_ld_chr_tarfile,
                 ref_trait_name = main_trait_name,

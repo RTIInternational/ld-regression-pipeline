@@ -1,0 +1,35 @@
+{
+  "plot_ld_regression_wf.ldsc_regression_logs" :
+  [
+    "s3://rti-cromwell-output/cromwell-execution/full_ld_regression_wf/8a753844-ab9c-449d-a068-48492aa8f0ed/call-ld_regression/shard-0/LDSC.single_ld_regression_wf/31b363fd-e7f5-4182-8d74-7110ab2d0d3c/call-ld_regression/ftnd_by_cigarettes_per_day_gscan.ldsc_regression.log",
+    "s3://rti-cromwell-output/cromwell-execution/full_ld_regression_wf/8a753844-ab9c-449d-a068-48492aa8f0ed/call-ld_regression/shard-1/LDSC.single_ld_regression_wf/e4a00cd6-1e06-4c7f-aff1-ce7ba3c37c08/call-ld_regression/ftnd_by_age_of_smoking_initiation_gscan.ldsc_regression.log",
+    "s3://rti-cromwell-output/cromwell-execution/full_ld_regression_wf/8a753844-ab9c-449d-a068-48492aa8f0ed/call-ld_regression/shard-2/LDSC.single_ld_regression_wf/f23300bc-ca2c-4f06-9937-f8beff8378ff/call-ld_regression/ftnd_by_smoking_cessation_current_vs_former_gscan.ldsc_regression.log",
+    "s3://rti-cromwell-output/cromwell-execution/full_ld_regression_wf/8a753844-ab9c-449d-a068-48492aa8f0ed/call-ld_regression/shard-3/LDSC.single_ld_regression_wf/9ebda3e5-aefb-41a2-aac3-841fb95632b4/call-ld_regression/ftnd_by_smoking_initiation_ever_vs_never_gscan.ldsc_regression.log",
+    "s3://rti-cromwell-output/cromwell-execution/full_ld_regression_wf/8a753844-ab9c-449d-a068-48492aa8f0ed/call-ld_regression/shard-4/LDSC.single_ld_regression_wf/fca3bf0e-39dc-4527-8727-4a2d8d3d3a17/call-ld_regression/ftnd_by_lifetime_cannabis_use_ever_vs_never.ldsc_regression.log",
+    "s3://rti-cromwell-output/cromwell-execution/full_ld_regression_wf/8a753844-ab9c-449d-a068-48492aa8f0ed/call-ld_regression/shard-5/LDSC.single_ld_regression_wf/432ee4b9-2a02-42fa-a165-1d2015fe491a/call-ld_regression/ftnd_by_alcohol_dependence.ldsc_regression.log",
+    "s3://rti-cromwell-output/cromwell-execution/full_ld_regression_wf/8a753844-ab9c-449d-a068-48492aa8f0ed/call-ld_regression/shard-6/LDSC.single_ld_regression_wf/bd67ecfc-fae1-46c9-9cc7-2937099489d8/call-ld_regression/ftnd_by_alcohol_drinks_per_week_gscan.ldsc_regression.log",
+    "s3://rti-cromwell-output/cromwell-execution/full_ld_regression_wf/8a753844-ab9c-449d-a068-48492aa8f0ed/call-ld_regression/shard-7/LDSC.single_ld_regression_wf/e821dbe4-05e8-415e-b33c-d4a91d80aea4/call-ld_regression/ftnd_by_copd.ldsc_regression.log"
+  ],
+  "plot_ld_regression_wf.analysis_name": "test_plot",
+  "plot_ld_regression_wf.trait_labels": [
+    "Cigarettes per day (GSCAN)",
+    "Age of smoking initiation (GSCAN)",
+    "Smoking cessation (current vs. former, GSCAN)",
+    "Smoking initiation (ever vs. never, GSCAN)",
+    "Lifetime cannabis use (ever vs. never)",
+    "Alcohol Dependence",
+    "Alcohol drinks per week (GSCAN)",
+    "COPD"
+  ],
+   "plot_ld_regression_wf.group_labels": [
+    "Cigarette smoking",
+    "Cigarette smoking",
+    "Cigarette smoking",
+    "Cigarette smoking",
+    "Drug and alcohol use",
+    "Drug and alcohol use",
+    "Drug and alcohol use",
+    "Respiratory"
+ ]
+}
+
