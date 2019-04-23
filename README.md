@@ -11,7 +11,7 @@ This document describes an automated WDL workflow designed to perform LD regress
 3) Perform LD-regression between the reference and all traits of interest using `ldsc.py`
 4) Combine results and plot in a single graph (below)
 
-<div align=center><img src="doc/ftnd_test.ld_regression_results.pdf" alt="LD regression output" width=1100 height=800 align="middle"/></div>
+<div align=center><img src="doc/ftnd_summary_figure.png" alt="LD regression output" width=1100 height=800 align="middle"/></div>
 
 ### Workflow inputs
 The following are required for the main phenotype and each phenotype you want to compare using ld-regression:
