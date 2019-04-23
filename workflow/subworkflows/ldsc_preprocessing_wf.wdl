@@ -1,5 +1,5 @@
-import "ld-regression-pipeline/workflow/munge_phenotype_sumstats_wf.wdl" as MUNGE_TRAIT_WF
-import "ld-regression-pipeline/workflow/munge_sumstats_wf.wdl" as MUNGE_MAIN_WF
+import "ld-regression-pipeline/workflow/subworkflows/munge_phenotype_sumstats_wf.wdl" as MUNGE_TRAIT_WF
+import "ld-regression-pipeline/workflow/subworkflows/munge_sumstats_wf.wdl" as MUNGE_MAIN_WF
 
 workflow ldsc_preprocessing_wf{
 

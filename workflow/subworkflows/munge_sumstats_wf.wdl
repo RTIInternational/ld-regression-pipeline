@@ -1,4 +1,4 @@
-import "ld-regression-pipeline/workflow/munge_sumstats_chr_wf.wdl" as MUNGE_CHR
+import "ld-regression-pipeline/workflow/subworkflows/munge_sumstats_chr_wf.wdl" as MUNGE_CHR
 import "ld-regression-pipeline/workflow/task_modules/utilities.wdl" as UTIL
 
 workflow munge_sumstats_wf{
