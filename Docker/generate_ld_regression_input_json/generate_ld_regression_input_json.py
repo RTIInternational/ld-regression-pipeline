@@ -12,12 +12,12 @@ from utils import configure_logging, get_argparser
 # Columns that must appear in input file
 REQUIRED_COLS = ["trait", "plot_label", "sumstats_path", "category",
                  "sample_size", "id_col", "chr_col", "pos_col", "a1_col", "a2_col",
-                 "effect_col", "pvalue_col", "sample_size_col", "effect_type"]
+                 "effect_col", "pvalue_col", "sample_size_col", "effect_type", "w_ld_chr"]
 
 # Columns that cannot have empty values
 REQUIRED_VAL_COLS = ["trait", "plot_label", "sumstats_path", "category",
                      "id_col", "chr_col", "pos_col", "a1_col", "a2_col",
-                     "effect_col", "pvalue_col", "effect_type"]
+                     "effect_col", "pvalue_col", "effect_type", "w_ld_chr"]
 
 # Columns that should be output as ints
 INT_TYPE_COLS = ["id_col", "chr_col", "pos_col", "a1_col",
@@ -28,7 +28,7 @@ INT_TYPE_COLS = ["id_col", "chr_col", "pos_col", "a1_col",
 NULL_EFFECT_VALS = {"beta"  : 0,
                     "z"     : 0,
                     "or"    : 1,
-                    "logor" : 0}
+                    "log_odd" : 0}
 
 # Maps colnames in input excel file to field names in WDL input json
 OUTPUT_COLNAME_MAP = {
@@ -45,7 +45,8 @@ OUTPUT_COLNAME_MAP = {
     "pvalue_col"        : "pheno_pvalue_cols",
     "sample_size_col"   : "pheno_num_samples_cols",
     "signed_sumstats"   : "pheno_signed_sumstats",
-    "sample_size"       : "pheno_num_samples"
+    "sample_size"       : "pheno_num_samples",
+    "w_ld_chr"          : "pheno_ld_chr_tarfiles"
 }
 
 def detect_workflow_name(input_dict):
@@ -88,10 +89,10 @@ def check_pheno_input_format(pheno_df):
     # Check to make sure effect type is either BETA, Z, OR, or LOGOR
     for i in range(len(pheno_df)):
         effect = pheno_df["effect_type"][i].lower()
-        if effect not in ["beta", "z", "or", "logor"]:
+        if effect not in ["beta", "z", "or", "log_odd"]:
             logging.error("Trait '{0}' has invalid effect type '{1}'. "
                           "Effect type must be either in "
-                          "[Beta, Z, OR, LogOR] (case-insensitive).".format(pheno_df["trait"][i], effect))
+                          "[Beta, Z, OR, Log_Odd] (case-insensitive).".format(pheno_df["trait"][i], effect))
             errors = True
 
     if errors:
