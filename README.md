@@ -84,6 +84,9 @@ Start with the json_input/full_ld_regression_wf_template.json and fill in the fo
 
         "full_ld_regression_wf.analysis_name": "ftnd_test"
         
+2) Set the name of your ref trait.
+
+        "full_ld_regression_wf.ref_trait_name" : "ftnd",
         
 2) Specify paths to GWAS summary files (22 in total; 1 per chr) for your main reference trait you wish to compare to other phenotypes
 
@@ -96,14 +99,13 @@ Start with the json_input/full_ld_regression_wf_template.json and fill in the fo
         ]
 3) Inspect your GWAS summary files to find the correct indices for each required column index (1-based so the first column has index 1)
         
-        "full_ld_regression_wf.ref_trait_name" : "ftnd",
-        "full_ld_regression_wf.ref_id_col":     1,
-        "full_ld_regression_wf.ref_chr_col":    2,
-        "full_ld_regression_wf.ref_pos_col":    3,
-        "full_ld_regression_wf.ref_a1_col":     5,
-        "full_ld_regression_wf.ref_a2_col":     4,
-        "full_ld_regression_wf.ref_beta_col":   6,
-        "full_ld_regression_wf.ref_pvalue_col": 8,
+        "full_ld_regression_wf.ref_id_col":             1,
+        "full_ld_regression_wf.ref_chr_col":            2,
+        "full_ld_regression_wf.ref_pos_col":            3,
+        "full_ld_regression_wf.ref_effect_allele_col":  4,
+        "full_ld_regression_wf.ref_ref_allele_col":     5,
+        "full_ld_regression_wf.ref_beta_col":           6,
+        "full_ld_regression_wf.ref_pvalue_col":         8,
         
 4) If your GWAS summary stats file has a sample size column, specify it's index
 
@@ -139,8 +141,8 @@ The format requires the following column names (explanation in parentheses):
 8. **id_col** (1-based column index of snp id in GWAS sumstats file)
 9. **chr_col** (chr column index) 
 10. **pos_col** (position index)
-11. **a1_col** (effect allele index)
-12. **a2_col** (ref allele index)
+11. **effect_allele_col** (effect allele index)
+12. **ref_allele_col** (ref allele index)
 13. **effect_col** (effect score index)
 14. **pvalue_col** (pvalue index)
 15. **sample_size_col** (sample size column index if present)
