@@ -68,7 +68,7 @@ def main():
     final_df = sumstats_info.merge(snp_info, how="inner", left_on=sumstat_rsid_colname, right_on=snp_info_rsid_colname)
 
     # Drop duplicate rsid column
-    final_df.drop(columns=snp_info_rsid_colname, inplace=True)
+    final_df.drop(labels=snp_info_rsid_colname, axis=1, inplace=True)
 
     # Remove 'chr' from beginning of chromsomes
     logging.info("Fixing chr numbering...")
