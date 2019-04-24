@@ -66,7 +66,7 @@ task plot_ld_regression_results{
         File output_file = "${output_filename}"
     }
     runtime{
-        docker: "rticode/plot_ld_regression_results:15d2b8df95eea31f62642ae21b27ff32a892dbf4"
+        docker: "rticode/plot_ld_regression_results:1ddbd682cb1e44dab6d11ee571add34bd1d06e21"
         cpu: "1"
         memory: "1 GB"
     }
