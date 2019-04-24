@@ -11,17 +11,17 @@ from utils import configure_logging, get_argparser
 
 # Columns that must appear in input file
 REQUIRED_COLS = ["trait", "plot_label", "sumstats_path", "category",
-                 "sample_size", "id_col", "chr_col", "pos_col", "a1_col", "a2_col",
+                 "sample_size", "id_col", "chr_col", "pos_col", "effect_allele_col", "ref_allele_col",
                  "effect_col", "pvalue_col", "sample_size_col", "effect_type", "w_ld_chr"]
 
 # Columns that cannot have empty values
 REQUIRED_VAL_COLS = ["trait", "plot_label", "sumstats_path", "category",
-                     "id_col", "chr_col", "pos_col", "a1_col", "a2_col",
+                     "id_col", "chr_col", "pos_col", "effect_allele_col", "ref_allele_col",
                      "effect_col", "pvalue_col", "effect_type", "w_ld_chr"]
 
 # Columns that should be output as ints
-INT_TYPE_COLS = ["id_col", "chr_col", "pos_col", "a1_col",
-                 "a2_col", "pvalue_col", "sample_size",
+INT_TYPE_COLS = ["id_col", "chr_col", "pos_col", "effect_allele_col",
+                 "ref_allele_col", "pvalue_col", "sample_size",
                  "effect_col", "sample_size_col"]
 
 # Null effect values for different effect types
@@ -39,8 +39,8 @@ OUTPUT_COLNAME_MAP = {
     "id_col"            : "pheno_id_cols",
     "chr_col"           : "pheno_chr_cols",
     "pos_col"           : "pheno_pos_cols",
-    "a1_col"            : "pheno_a1_cols",
-    "a2_col"            : "pheno_a2_cols",
+    "effect_allele_col" : "pheno_effect_allele_cols",
+    "ref_allele_col"    : "pheno_ref_allele_cols",
     "effect_col"        : "pheno_beta_cols",
     "pvalue_col"        : "pheno_pvalue_cols",
     "sample_size_col"   : "pheno_num_samples_cols",
@@ -99,7 +99,7 @@ def check_pheno_input_format(pheno_df):
         raise IOError("Phenotype excel has invalid effect type info for one or more traits! See messages above.")
 
     # Make sure all column index columns have integer values > 0 (1-based index so 0 index needs to raise error)
-    for col_type in ["id_col", "chr_col", "pos_col", "a1_col", "a2_col", "effect_col", "pvalue_col", "sample_size_col"]:
+    for col_type in INT_TYPE_COLS:
         if len(pheno_df[pheno_df[col_type] < 1]) > 0:
             logging.error("'{0}' column of phenotype excel has at least one 0 value. "
                           "Indices are 1-based!".format(col_type))
