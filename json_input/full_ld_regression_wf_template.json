@@ -14,7 +14,7 @@
     "full_ld_regression_wf.ref_pvalue_col":           8,
     "full_ld_regression_wf.ref_signed_sumstats"       : "BETA,0",
     "full_ld_regression_wf.ref_num_samples" :         46213,
-    "full_ld_regression_wf.ref_ld_chr_tarfile":       "s3://clustername--files/eur_w_ld_chr.tar.bz2",
+    "full_ld_regression_wf.ref_ld_chr_tarfile":       "s3://rti-cromwell-output/ldsr-input-files/eur_w_ld_chr.tar.bz2",
     "full_ld_regression_wf.ref_sumstats_files":
     [
       "s3://rti-nd/META/1df/boneyard/20181108/results/ea/20181108_ftnd_meta_analysis_wave3.eur.chr1.exclude_singletons.1df.gz",
@@ -69,7 +69,7 @@
     ],
 
   "####################### STEP_3 INPUTS: munge_sumstats.py":"",
-    "full_ld_regression_wf.merge_allele_snplist": "s3://clustername--files/w_hm3.snplist",
+    "full_ld_regression_wf.merge_allele_snplist": "s3://rti-cromwell-output/ldsr-input-files/w_hm3.snplist.bz2",
 
   "####################### STEP_4 LD REGRESSION TRAIT INPUTS":"",
   "## This section will be auto-filled by the generate_id_regression_input_json.py utility tool": ""
