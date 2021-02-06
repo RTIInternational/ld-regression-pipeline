@@ -38,7 +38,7 @@
       "s3://rti-nd/gwas_meta/categorical_ftnd/results/1df/0001/eur/final_stats/ftnd_wave3_meta_analysis_chr19_eur.txt.gz",
       "s3://rti-nd/gwas_meta/categorical_ftnd/results/1df/0001/eur/final_stats/ftnd_wave3_meta_analysis_chr20_eur.txt.gz",
       "s3://rti-nd/gwas_meta/categorical_ftnd/results/1df/0001/eur/final_stats/ftnd_wave3_meta_analysis_chr21_eur.txt.gz",
-      "s3://rti-nd/gwas_meta/categorical_ftnd/results/1df/0001/eur/final_stats/ftnd_wave3_meta_analysis_chr22_eur.txt.gz",
+      "s3://rti-nd/gwas_meta/categorical_ftnd/results/1df/0001/eur/final_stats/ftnd_wave3_meta_analysis_chr22_eur.txt.gz"
     ],
 
   "####################### STEP_2 INPUTS: Convert to 1000g ids": "",
