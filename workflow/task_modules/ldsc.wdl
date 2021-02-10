@@ -12,6 +12,10 @@ task ldsc_rg{
     # Output filenames
     String output_basename
     String output_filename = output_basename + ".log"
+    
+    String docker = "rtibiocloud/ldsc:v1.0.1_0bb574e"
+    String cpu = "6"
+    String mem = "16 GB"
 
     command <<<
 
@@ -35,9 +39,9 @@ task ldsc_rg{
        File output_file = "${output_filename}"
     }
     runtime {
-        docker: "rticode/ldsc:7618f4943d8f31a37cbd207f867ba5742d03373f"
-        cpu: "6"
-        memory: "16 GB"
+        docker: ${docker}
+        cpu: ${cpu}
+        memory: ${mem}
   }
 }
 
