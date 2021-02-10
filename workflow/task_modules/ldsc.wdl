@@ -14,8 +14,8 @@ task ldsc_rg{
     String output_filename = output_basename + ".log"
     
     String docker = "rtibiocloud/ldsc:v1.0.1_0bb574e"
-    String cpu = "6"
-    String mem = "16 GB"
+    Int cpu = 6
+    Int mem = 16
 
     command <<<
 
@@ -39,9 +39,9 @@ task ldsc_rg{
        File output_file = "${output_filename}"
     }
     runtime {
-        docker: ${docker}
-        cpu: ${cpu}
-        memory: ${mem}
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
   }
 }
 
@@ -57,6 +57,11 @@ task munge_sumstats{
     Int? num_samples
     String output_basename
     String output_filename = "${output_basename}.sumstats.gz"
+    
+    String docker = "rtibiocloud/ldsc:v1.0.1_0bb574e"
+    Int cpu = 2
+    Int mem = 6
+    
     command {
 
         source activate ldsc
@@ -86,8 +91,8 @@ task munge_sumstats{
         File output_file = "${output_filename}"
     }
     runtime {
-        docker: "rticode/ldsc:7618f4943d8f31a37cbd207f867ba5742d03373f"
-        cpu: "2"
-        memory: "6 GB"
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
   }
 }
