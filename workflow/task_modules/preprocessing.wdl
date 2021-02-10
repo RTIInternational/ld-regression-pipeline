@@ -76,8 +76,8 @@ task convert_to_1000g_ids {
     String output_filename = basename(in_file, ".txt") + ".phase3ID.txt"
     
     String docker = "rtibiocloud/convert_to_1000g_ids:none_315130"
-    String cpu = "2"
-    String mem = "8 GB"
+    Int cpu = 2
+    Int mem = 8
     
     command{
 
@@ -99,9 +99,9 @@ task convert_to_1000g_ids {
         File output_file = "${output_filename}"
     }
     runtime{
-        docker: ${docker}
-        cpu: ${cpu}
-        memory: ${mem}
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 
 }
