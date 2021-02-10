@@ -60,8 +60,8 @@ task plot_ld_regression_results{
     Float? pvalue_threshold
     
     String docker = "rtibiocloud/plot_ld_regression_results:v1.0_0f1f25f"
-    String cpu = "1"
-    String mem = "1 GB"
+    Int cpu = 1
+    Int mem = 1
     
     command{
         Rscript /opt/plot_ld_regression/plot_ld_regression_results.R --input_file ${ld_results_file} \
@@ -71,9 +71,9 @@ task plot_ld_regression_results{
         File output_file = "${output_filename}"
     }
     runtime{
-        docker: ${docker}
-        cpu: ${cpu}
-        memory: ${mem}
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 }
 
