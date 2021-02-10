@@ -92,8 +92,9 @@ task adj_csv_pvalue{
     Boolean tab_delimited = false
 
     String docker = "rtibiocloud/adjust_csv_pvalue:none_1b51080"
-    String cpu = "1"
-    String mem = "1 GB"
+    Int cpu = 1
+    Int mem = 1
+            
     command {
         Rscript /opt/adjust_csv_pvalue.R --input_file ${input_file} \
             --output_file ./${output_filename} \
@@ -105,9 +106,9 @@ task adj_csv_pvalue{
         File output_file = "${output_filename}"
     }
     runtime {
-        docker: ${docker}
-        cpu: ${cpu}
-        memory: ${mem}
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 }
 
