@@ -58,6 +58,11 @@ task plot_ld_regression_results{
     Boolean comma_delimited = false
     File? group_order_file
     Float? pvalue_threshold
+    
+    String docker = "rtibiocloud/plot_ld_regression_results:v1.0_0f1f25f"
+    String cpu = "1"
+    String mem = "1 GB"
+    
     command{
         Rscript /opt/plot_ld_regression/plot_ld_regression_results.R --input_file ${ld_results_file} \
             --output_file ./${output_filename} ${true="--comma_delimited" false="" comma_delimited} ${"--group_order_file " + group_order_file} ${"--pvalue_threshold " + pvalue_threshold}
@@ -66,9 +71,9 @@ task plot_ld_regression_results{
         File output_file = "${output_filename}"
     }
     runtime{
-        docker: "rticode/plot_ld_regression_results:1ddbd682cb1e44dab6d11ee571add34bd1d06e21"
-        cpu: "1"
-        memory: "1 GB"
+        docker: ${docker}
+        cpu: ${cpu}
+        memory: ${mem}
     }
 }
 
