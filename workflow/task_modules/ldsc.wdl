@@ -13,7 +13,7 @@ task ldsc_rg{
     String output_basename
     String output_filename = output_basename + ".log"
     
-    String docker = "rtibiocloud/ldsc:v1.0.1_0bb574e"
+    String docker = "404545384114.dkr.ecr.us-east-1.amazonaws.com/ldsc:v1.0.1_0bb574e"
     Int cpu = 6
     Int mem = 16
 
@@ -58,7 +58,7 @@ task munge_sumstats{
     String output_basename
     String output_filename = "${output_basename}.sumstats.gz"
     
-    String docker = "rtibiocloud/ldsc:v1.0.1_0bb574e"
+    String docker = "404545384114.dkr.ecr.us-east-1.amazonaws.com/ldsc:v1.0.1_0bb574e"
     Int cpu = 2
     Int mem = 6
     

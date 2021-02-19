@@ -15,6 +15,11 @@ task standardize_sumstat_cols{
     Int num_samples_col = -1
     String output_filename = basename(sumstats_file, ".gz") + ".standardized.txt"
     String tmp_filename = "unzipped_gxg_file.txt"
+
+    String docker = "public.ecr.aws/ubuntu/ubuntu:18.04_stable" 
+    Int cpu = 1
+    Int mem = 1
+
     command<<<
         set -e
 
@@ -57,9 +62,9 @@ task standardize_sumstat_cols{
         File output_file = "${output_filename}"
     }
     runtime{
-        docker: "ubuntu:18.04"
-        cpu: "1"
-        memory: "1 GB"
+        docker: docker
+        cpu: cpu 
+        memory: "${mem} GB" 
     }
 }
 
@@ -75,7 +80,7 @@ task convert_to_1000g_ids {
     Int chr
     String output_filename = basename(in_file, ".txt") + ".phase3ID.txt"
     
-    String docker = "rtibiocloud/convert_to_1000g_ids:none_315130"
+    String docker = "404545384114.dkr.ecr.us-east-1.amazonaws.com/convert_to_1000g_ids:v1.0_315130b"
     Int cpu = 2
     Int mem = 8
     
@@ -109,6 +114,11 @@ task convert_to_1000g_ids {
 task reformat_for_munge_sumstats {
     File in_file
     String output_filename = basename(in_file, ".txt") + ".munge_ready.txt"
+
+    String docker = "public.ecr.aws/ubuntu/ubuntu:18.04_stable" 
+    Int cpu = 1
+    Int mem = 2
+
     command<<<
 
         set -e
@@ -124,9 +134,9 @@ task reformat_for_munge_sumstats {
         File output_file = "${output_filename}"
     }
     runtime{
-        docker: "ubuntu:18.04"
-        cpu: "1"
-        memory: "2 GB"
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 
 }
@@ -134,6 +144,11 @@ task reformat_for_munge_sumstats {
 task remove_empty_variants {
     File in_file
     String output_filename = basename(in_file, ".gz") + ".no_empty_variants.txt"
+
+    String docker = "public.ecr.aws/ubuntu/ubuntu:18.04_stable" 
+    Int cpu = 1
+    Int mem = 2
+
     command{
         zgrep -E "G|C|T|A|g|c|t|a" ${in_file} > ${output_filename}
     }
@@ -141,9 +156,9 @@ task remove_empty_variants {
         File output_file = "${output_filename}"
     }
     runtime{
-        docker: "ubuntu:18.04"
-        cpu: "1"
-        memory: "2 GB"
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 
 }

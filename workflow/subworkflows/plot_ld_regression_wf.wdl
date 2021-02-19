@@ -3,6 +3,10 @@ import "ld-regression-pipeline/workflow/task_modules/utilities.wdl" as UTIL
 task parse_log_file{
     File ld_regression_log
     String output_filename = basename(ld_regression_log, ".log") + ".parsed.tsv"
+    
+    String docker = "public.ecr.aws/ubuntu/ubuntu:18.04_stable"
+    Int cpu = 1
+    Int mem = 1
 
     command<<<
         # Get results as tsv
@@ -12,9 +16,9 @@ task parse_log_file{
         File output_file = "${output_filename}"
     }
     runtime{
-        docker: "ubuntu:18.04"
-        cpu: "1"
-        memory: "1 GB"
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 }
 
@@ -23,6 +27,11 @@ task make_label_data_tsv{
     Array[String] group_labels
     String output_basename
     String output_filename = "${output_basename}.plot_metadata.tsv"
+
+    String docker = "public.ecr.aws/ubuntu/ubuntu:18.04_stable"
+    Int cpu = 1
+    Int mem = 1
+
     command{
 
         # Output trait names to txt file
@@ -46,9 +55,9 @@ task make_label_data_tsv{
         File output_file = "${output_filename}"
     }
     runtime{
-        docker: "ubuntu:18.04"
-        cpu: "1"
-        memory: "1 GB"
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 }
 
@@ -59,7 +68,7 @@ task plot_ld_regression_results{
     File? group_order_file
     Float? pvalue_threshold
     
-    String docker = "rtibiocloud/plot_ld_regression_results:v1.0_0f1f25f"
+    String docker = "404545384114.dkr.ecr.us-east-1.amazonaws.com/plot_ld_regression_results:v1.0_0f1f25f"
     Int cpu = 1
     Int mem = 1
     

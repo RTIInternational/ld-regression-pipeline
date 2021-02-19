@@ -1,6 +1,11 @@
 task gunzip{
     File in_file
     String out_filename = basename(in_file, ".gz")
+
+    String docker = "public.ecr.aws/ubuntu/ubuntu:18.04_stable"
+    Int cpu = 1
+    Int mem = 1
+
     command{
         gunzip -c ${in_file} > ${out_filename}
     }
@@ -8,9 +13,9 @@ task gunzip{
         File output_file = "${out_filename}"
     }
     runtime{
-        docker: "ubuntu:18.04"
-        cpu: "1"
-        memory: "1 GB"
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 }
 
@@ -20,6 +25,11 @@ task cat_files_with_headers {
     Array[File] in_files
     String output_basename
     String output_filename = output_basename + ".merged.txt"
+
+    String docker = "public.ecr.aws/ubuntu/ubuntu:18.04_stable"
+    Int cpu = 1
+    Int mem = 1
+
     command {
         awk '(NR == 1) || (FNR > 1)' ${sep=" " in_files} > ${output_filename}
     }
@@ -27,9 +37,9 @@ task cat_files_with_headers {
         File output_file = "${output_filename}"
     }
     runtime {
-        docker: "ubuntu:18.04"
-        cpu: "1"
-        memory: "1 GB"
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 }
 
@@ -37,6 +47,11 @@ task split_text_file_by_chr {
     File in_file
     Int chr_col
     String output_basename
+
+    String docker = "public.ecr.aws/ubuntu/ubuntu:18.04_stable"
+    Int cpu = 1
+    Int mem = 1
+
     command<<<
 
         set -e
@@ -55,15 +70,20 @@ task split_text_file_by_chr {
         Map[String, Int] chr_index_map = read_map(stdout())
     }
     runtime {
-        docker: "ubuntu:18.04"
-        cpu: "1"
-        memory: "1 GB"
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 }
 
 task get_colname_index {
     String colname
     File in_file
+
+    String docker = "public.ecr.aws/ubuntu/ubuntu:18.04_stable"
+    Int cpu = 1
+    Int mem = 1
+
     command<<<
         head -n 1 ${in_file} | perl -lane 'for my $i (0 .. $#F){ if( $F[$i] eq "${colname}" ){print $i + 1; exit;} elsif( $i == (scalar @F) -1 ){die "Colname not found!"}};'
     >>>
@@ -71,9 +91,9 @@ task get_colname_index {
         Int index = read_int(stdout())
     }
     runtime {
-        docker: "ubuntu:18.04"
-        cpu: "1"
-        memory: "1 GB"
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 }
 
@@ -91,7 +111,7 @@ task adj_csv_pvalue{
     # Boolean for whether input file is tab delimited (default is false to assume comma-separated)
     Boolean tab_delimited = false
 
-    String docker = "rtibiocloud/adjust_csv_pvalue:none_1b51080"
+    String docker = "404545384114.dkr.ecr.us-east-1.amazonaws.com/adjust_csv_pvalue:v1.0_1b51080"
     Int cpu = 1
     Int mem = 1
             
@@ -117,6 +137,10 @@ task paste {
     String output_filename
     String? delim
 
+    String docker = "public.ecr.aws/ubuntu/ubuntu:18.04_stable"
+    Int cpu = 1
+    Int mem = 1
+
     command{
         paste ${"-d '" + delim + "'"} ${sep = " " in_files} > ${output_filename}
     }
@@ -124,9 +148,9 @@ task paste {
         File output_file = "${output_filename}"
     }
     runtime {
-        docker: "ubuntu:18.04"
-        cpu: "1"
-        memory: "1 GB"
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 
 }
@@ -136,6 +160,11 @@ task untar {
     String suffix
     String tar_options
     String output_dir = basename(tar_file, suffix)
+
+    String docker = "public.ecr.aws/ubuntu/ubuntu:18.04_stable"
+    Int cpu = 1
+    Int mem = 1
+
     command{
         tar  ${tar_options} ${tar_file}
     }
@@ -143,9 +172,9 @@ task untar {
         Array[File] output_files = glob("${output_dir}/*")
     }
     runtime {
-        docker: "ubuntu:18.04"
-        cpu: "1"
-        memory: "1 GB"
+        docker: docker
+        cpu: cpu
+        memory: "${mem} GB"
     }
 }
 
