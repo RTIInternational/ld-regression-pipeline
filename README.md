@@ -199,7 +199,7 @@ There are a number of workflows if you're interested in running only part of the
 * single_ld_regression_wf.wdl: Run LD-regression only of the ref trait against a single trait 
     
         
-## Authors
+## Contact
 For any questions, comments, concerns, or bugs,
 send me an email or slack and I'll be happy to help. 
-* [Alex Waldrop](https://github.com/alexwaldrop) (awaldrop@rti.org)
+* [Jesse Marks](https://github.com/jaamarks) (jmarks@rti.org)
